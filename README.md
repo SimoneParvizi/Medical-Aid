@@ -2,7 +2,7 @@
 
 ## About
 
-This Streamlit application utilizes OpenAI's GPT-4 model to analyze medical images. Users can upload images, and the app provides an analysis that points out any irregularities, illnesses, or conditions visible in the images.
+This Streamlit application utilizes OpenAI's LLM to analyze medical images. Users can upload images, and the app provides an analysis that points out any irregularities, illnesses, or conditions visible in the images.
 
 ![Demo](path_to_your_gif.gif)
 
