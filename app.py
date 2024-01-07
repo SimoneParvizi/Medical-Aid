@@ -23,17 +23,17 @@ If certain details in the image are indiscernible, it's acceptable to note 'Uncl
 Proceed to analyze the image and respond as instructed, adhering to the outlined format."""
 
 
-# Initialize session state variables
 if 'uploaded_file' not in st.session_state:
     st.session_state.uploaded_file = None
 if 'result' not in st.session_state:
     st.session_state.result = None
 
+# Read the image
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
 
-def call_gpt4_model_for_analysis(filename: str, sample_prompt=sample_prompt):
+def call_LLM_for_analysis(filename: str, sample_prompt=sample_prompt):
     base64_image = encode_image(filename)
     
     messages = [
@@ -63,7 +63,7 @@ def call_gpt4_model_for_analysis(filename: str, sample_prompt=sample_prompt):
     print(response.choices[0].message.content)
     return response.choices[0].message.content
 
-def chat_eli(query):
+def explain(query):
     eli5_prompt = "You have to explain the below piece of information to a five years old in a relatevely short paragraph. \n" + query
     messages = [
         {
@@ -95,13 +95,13 @@ if uploaded_file is not None:
 # Process button
 if st.button('Analyze Image'):
     if 'filename' in st.session_state and os.path.exists(st.session_state['filename']):
-        st.session_state['result'] = call_gpt4_model_for_analysis(st.session_state['filename'])
+        st.session_state['result'] = call_LLM_for_analysis(st.session_state['filename'])
         st.markdown(st.session_state['result'], unsafe_allow_html=True)
-        os.unlink(st.session_state['filename'])  # Delete the temp file after processing
+        os.unlink(st.session_state['filename'])  # Delete the temp file 
 
-# ELI5 Explanation
+# Simpler Explanation
 if 'result' in st.session_state and st.session_state['result']:
-    st.info("Below you have an option for ELI5 to understand in simpler terms.")
-    if st.radio("ELI5 - Explain Like I'm 5", ('No', 'Yes')) == 'Yes':
-        simplified_explanation = chat_eli(st.session_state['result'])
+    #st.info("Below you have an option for ELI5 to understand in simpler terms.")
+    if st.radio("Explain in simpler terms", ('No', 'Yes')) == 'Yes':
+        simplified_explanation = explain(st.session_state['result'])
         st.markdown(simplified_explanation, unsafe_allow_html=True)
