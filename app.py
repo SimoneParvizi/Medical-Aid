@@ -64,7 +64,7 @@ def call_gpt4_model_for_analysis(filename: str, sample_prompt=sample_prompt):
     return response.choices[0].message.content
 
 def chat_eli(query):
-    eli5_prompt = "You have to explain the below piece of information to a five years old. \n" + query
+    eli5_prompt = "You have to explain the below piece of information to a five years old in a relatevely short paragraph. \n" + query
     messages = [
         {
             "role": "user",
@@ -80,10 +80,7 @@ def chat_eli(query):
 
     return response.choices[0].message.content
 
-st.title("Medical Help using Multimodal LLM")
-
-with st.expander("About this App"):
-    st.write("Upload an image to get an analysis from GPT-4.")
+st.title("Medical Suggestion Tool using Multimodal LLM")
 
 uploaded_file = st.file_uploader("Upload an Image", type=["jpg", "jpeg", "png"])
 
