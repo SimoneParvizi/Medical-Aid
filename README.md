@@ -18,7 +18,7 @@ This Streamlit application utilizes OpenAI's LLM to analyze medical images. User
 1. **Upload an Image**: Click on the 'Upload an Image' button to upload your medical image.
 2. **Analyze Image**: After uploading, click 'Analyze Image' to start the analysis.
 3. **View Results**: The analysis will be displayed below the image.
-4. **ELI5 Explanation**: For a simplified explanation, select 'Yes' under the ELI5 section.
+4. **Simpler Explanation**: For a simplified explanation, select 'Yes' under the section.
 
 ## Running the App
 
@@ -27,7 +27,7 @@ To run the application, follow these steps:
 1. **Start the App**: Navigate to the project directory in your terminal and run the following command:
 
     ```bash
-    streamlit run app.py
+    streamlit run C:\Users\path_to_the_app\app.py
     ```
 
 2. **Access the App**: Once the server starts, it will be accessible via your web browser. By default, the app runs at:
@@ -42,4 +42,3 @@ To run the application, follow these steps:
 
 - Ensure that the image format is either JPG, JPEG, or PNG.
 - Wait for the analysis to complete after uploading the image.
-- For a simplified explanation, choose the 'Yes' option under the ELI5 (Explain Like I'm 5) section.
