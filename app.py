@@ -28,10 +28,12 @@ if 'uploaded_file' not in st.session_state:
 if 'result' not in st.session_state:
     st.session_state.result = None
 
+
 # Read the image
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
+
 
 def call_LLM_for_analysis(filename: str, sample_prompt=sample_prompt):
     base64_image = encode_image(filename)
@@ -63,6 +65,7 @@ def call_LLM_for_analysis(filename: str, sample_prompt=sample_prompt):
     print(response.choices[0].message.content)
     return response.choices[0].message.content
 
+
 def explain(query):
     eli5_prompt = "You have to explain the below piece of information to a five years old in a relatevely short paragraph. \n" + query
     messages = [
@@ -79,6 +82,8 @@ def explain(query):
     )
 
     return response.choices[0].message.content
+
+
 
 st.title("Medical Suggestion Tool using Multimodal LLM")
 
