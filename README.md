@@ -4,7 +4,8 @@
 
 This Streamlit application utilizes OpenAI's LLM to analyze medical images. Users can upload images, and the app provides an analysis that points out any irregularities, illnesses, or conditions visible in the images.
 
-![Demo](path_to_your_gif.gif)
+![Medical Aid](https://github.com/SimoneParvizi/Medical-Aid/assets/75120707/b63c2b76-cb8a-4ccd-8778-32903bb01bc9)
+
 
 ## Features
 
